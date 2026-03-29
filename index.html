@@ -116,24 +116,19 @@
  </div>
  </div>
  </section>
-  <!-- 留言板 -->
+<!-- 留言板 -->
 <section class="smooth-reveal">
 <h2>留言</h2>
-<script src="https://giscus.app/client.js"
-data-repo="lcm081216-rgb/my-website"
-data-repo-id="R_kgDOR0C5LA"
-data-category="General"
-data-category-id="DIC_kwDOR0C5LM4C5jxw"
-data-mapping="pathname"
-data-strict="0"
-data-reactions-enabled="1"
-data-emit-metadata="0"
-data-input-position="top"
-data-theme="light"
-data-lang="zh-CN"
-data-loading="lazy"
-crossorigin="anonymous"
-async>
+<div id="waline-comments"></div>
+<script type="module">
+import { createComment } from 'https://unpkg.com/@waline/client@3/dist/waline.mjs';
+createComment({
+el: '#waline-comments',
+serverURL: 'https://waline-demo.vercel.app',
+meta: [],
+requiredMeta: [],
+anonymous: true,
+});
 </script>
 </section>
  </main>
