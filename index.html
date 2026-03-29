@@ -119,17 +119,15 @@
 <!-- 留言板 -->
 <section class="smooth-reveal">
 <h2>留言</h2>
-<div id="waline-comments"></div>
-<script type="module">
-import { createComment } from 'https://unpkg.com/@waline/client@3/dist/waline.mjs';
-createComment({
-el: '#waline-comments',
-serverURL: 'https://comment.liuliyuan.cn',
-meta: ['nick'],
-requiredMeta: [],
-anonymous: true,
+<link rel="stylesheet" href="https://unpkg.com/artalk@2.4.6/dist/Artalk.css">
+<div id="artalk-root"></div>
+<script src="https://unpkg.com/artalk@2.4.6/dist/Artalk.js"></script>
+<script>
+new Artalk({
+el: '#artalk-root',
+server: 'https://artalk.huashengw.online',
 placeholder: '说点什么...',
-avatar: 'mp',
+flatMode: true,
 });
 </script>
 </section>
