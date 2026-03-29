@@ -124,10 +124,12 @@
 import { createComment } from 'https://unpkg.com/@waline/client@3/dist/waline.mjs';
 createComment({
 el: '#waline-comments',
-serverURL: 'https://waline-demo.vercel.app',
-meta: [],
+serverURL: 'https://comment.liuliyuan.cn',
+meta: ['nick'],
 requiredMeta: [],
 anonymous: true,
+placeholder: '说点什么...',
+avatar: 'mp',
 });
 </script>
 </section>
