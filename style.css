@@ -6,12 +6,14 @@
 }
 
 body {
+ /* 兼容性更好的字体 */
  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
  font-weight: 300;
  line-height: 1.8;
  color: #2d2d2d;
  background-color: #fdfaf6;
  -webkit-font-smoothing: antialiased;
+ -moz-osx-font-smoothing: grayscale;
 }
 
 header, main, footer {
@@ -266,27 +268,39 @@ h3 {
  display: flex;
  gap: 16px;
  flex-wrap: wrap;
+ justify-content: center;
 }
 
 .contact-card {
  display: flex;
  align-items: center;
- gap: 10px;
- padding: 14px 20px;
+ gap: 12px;
+ padding: 16px 24px;
  background: #f8f5f1;
- border-radius: 10px;
+ border-radius: 12px;
  text-decoration: none;
  color: #4a4a4a;
- font-size: 13px;
+ font-size: 14px;
  transition: all 0.3s ease;
+ min-width: 200px;
 }
 
 .contact-card:hover {
  background: #e8dfd5;
+ transform: translateY(-2px);
 }
 
 .contact-icon {
- font-size: 16px;
+ font-size: 12px;
+ padding: 4px 10px;
+ background: #8b7d6b;
+ color: #fff;
+ border-radius: 6px;
+ font-weight: 400;
+}
+
+.contact-text {
+ color: #4a4a4a;
 }
 
 /* ========== 页脚 ========== */
