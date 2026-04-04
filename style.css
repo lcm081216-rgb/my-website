@@ -776,3 +776,13 @@ body::before {
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+/* 解决弹窗不能滚动的问题 */
+#hobbyModal {
+    overflow-y: auto !important; /* 强制允许垂直滚动 */
+    align-items: flex-start !important; /* 确保内容从顶部开始显示 */
+    padding-top: 50px; /* 顶部留一点呼吸空间 */
+}
+
+.hobby-modal-content {
+    margin-bottom: 50px; /* 底部也留一点空间 */
+}
