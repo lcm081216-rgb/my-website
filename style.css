@@ -786,3 +786,58 @@ body::before {
 .hobby-modal-content {
     margin-bottom: 50px; /* 底部也留一点空间 */
 }
+/* ========== 爱好弹窗新增加的样式 (毛玻璃效果) ========== */
+
+/* 1. 给遮罩层加上毛玻璃 */
+#hobbyModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 将背景色设为半透明，才能透出下面的内容进行模糊 */
+    background-color: rgba(0, 0, 0, 0.4) !important; 
+    display: none;
+    justify-content: center;
+    align-items: flex-start !important; /* 保持顶部对齐，方便滚动 */
+    overflow-y: auto !important;        /* 强制允许垂直滚动 */
+    z-index: 2000;
+    
+    /* 🌟 毛玻璃核心代码：对遮罩层后面的内容进行模糊 */
+    -webkit-backdrop-filter: blur(10px) !important; /* 兼容 Safari */
+    backdrop-filter: blur(10px) !important;         /* 标准语法 */
+    
+    padding-top: 50px;
+    transition: opacity 0.3s ease; /* 优雅的淡入淡出 */
+}
+
+#hobbyModal.active {
+    display: flex;
+}
+
+/* 2. 弹窗内容的微调 */
+.hobby-modal-content {
+    background: rgba(255, 255, 255, 0.9); /* 内容白框也设为半透明，更好看 */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* 加一个细细的白边 */
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto 50px auto; /* 底部留白 */
+    padding: 30px;
+    border-radius: 16px; /* 更圆润的角 */
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* 深邃的阴影，浮起来的感觉 */
+}
+
+/* 3. 图片的优雅显示 */
+#hobbyModalBody img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s ease; /* 鼠标悬停有个小动画 */
+}
+
+#hobbyModalBody img:hover {
+    transform: scale(1.02); /* 鼠标悬停稍微放大 */
+}
