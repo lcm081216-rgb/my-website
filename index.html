@@ -59,11 +59,11 @@
  <img src="assets/hobby5.jpg" alt="画画" class="hobby-img">
  <span class="hobby-name">画画</span>
  </div>
-  <div class="hobby-card">
+ <div class="hobby-card">
  <img src="assets/hobby6.jpg" alt="滑雪" class="hobby-img">
  <span class="hobby-name">滑雪</span>
  </div>
-  <div class="hobby-card">
+ <div class="hobby-card">
  <img src="assets/hobby7.jpg" alt="数码" class="hobby-img">
  <span class="hobby-name">数码</span>
  </div>
@@ -88,33 +88,30 @@
  </a>
  </section>
 
-  <!-- ========== 我的足迹 - 中国地图 ========== -->
+ <!-- 我的足迹 -->
  <section class="smooth-reveal">
-   <h2>我的足迹</h2>
-   
-   <div class="map-container">
-     <div id="mapWrapper" class="map-wrapper">
-       <!-- SVG地图会通过JavaScript加载 -->
-     </div>
-     
-     <div class="map-footer">
-       <div class="map-stats">
-         <span class="stat-number">15</span>
-         <span class="stat-label">个地区</span>
-       </div>
-       <div class="map-legend">
-         <span class="legend-item">
-           <span class="legend-dot visited"></span>
-           <span class="legend-text">已去过</span>
-         </span>
-         <span class="legend-item">
-           <span class="legend-dot unvisited"></span>
-           <span class="legend-text">未去过</span>
-         </span>
-       </div>
-     </div>
+ <h2>我的足迹</h2>
+ <div class="map-container">
+  <div id="mapWrapper" class="map-wrapper"></div>
+  <div class="map-footer">
+   <div class="map-stats">
+    <span class="stat-number">15</span>
+    <span class="stat-label">个地区</span>
    </div>
+   <div class="map-legend">
+    <span class="legend-item">
+     <span class="legend-dot visited"></span>
+     <span class="legend-text">已去过</span>
+    </span>
+    <span class="legend-item">
+     <span class="legend-dot unvisited"></span>
+     <span class="legend-text">未去过</span>
+    </span>
+   </div>
+  </div>
+ </div>
  </section>
+
  <!-- 偏爱 -->
  <section class="smooth-reveal">
  <h2>偏爱</h2>
@@ -157,7 +154,6 @@
  </div>
  </section>
 
-
  </main>
 
  <footer class="smooth-reveal">
@@ -165,5 +161,31 @@
  </footer>
 
  <script src="script.js"></script>
+ <script>
+  // 地图JS - 用setTimeout确保不影响主脚本
+  setTimeout(function() {
+   var visitedProvinces = [
+    'beijing','shanghai','nei-mongol','jilin','sichuan','yunnan',
+    'jiangsu','zhejiang','anhui','shandong','guangdong','guangxi-zhuang',
+    'hainan','hong-kong','macau'
+   ];
+
+   var wrap = document.getElementById('mapWrapper');
+   if (!wrap) return;
+
+   fetch('assets/china-map.svg')
+    .then(function(r) { return r.text(); })
+    .then(function(svgText) {
+     wrap.innerHTML = svgText;
+     var svg = wrap.querySelector('svg');
+     if (!svg) return;
+     svg.classList.add('china-map-svg');
+     svg.querySelectorAll('path[id]').forEach(function(p) {
+      if (visitedProvinces.indexOf(p.id) !== -1) p.classList.add('visited');
+     });
+    })
+    .catch(function(e) { console.warn('地图加载失败', e); });
+  }, 1);
+ </script>
 </body>
 </html>
