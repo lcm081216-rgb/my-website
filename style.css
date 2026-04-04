@@ -738,3 +738,41 @@ body::before {
   grid-column: span 2;
   aspect-ratio: 2/1;
 }
+/* 建议替换原有的弹窗样式 */
+#hobbyModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85); /* 稍微深一点更有质感 */
+    display: none;
+    justify-content: center;
+    align-items: flex-start; /* 重要：改为顶部对齐 */
+    overflow-y: auto;        /* 重要：背景层允许滚动 */
+    z-index: 2000;
+}
+
+#hobbyModal.active {
+    display: flex;
+}
+
+.hobby-modal-content {
+    background: #fff;
+    width: 90%;
+    max-width: 700px;
+    margin: 40px auto;      /* 重要：上下留出间距 */
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
+}
+
+/* 图片样式优化 */
+#hobbyModalBody img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
