@@ -1,6 +1,5 @@
 // 使用 Intersection Observer API 实现高性能的滚动监听
 document.addEventListener('DOMContentLoaded', () => {
- // 获取所有带有 smooth-reveal 类的元素
  const observerOptions = {
   root: null,
   rootMargin: '0px',
@@ -55,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
   .catch(function(e) { console.warn('地图加载失败', e); });
 })();
+
 // ========== 我的世界足迹 ==========
 (function() {
  var visitedCountries = [
@@ -77,9 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
   })
   .catch(function(e) { console.warn('世界地图加载失败', e); });
 })();
+
 // ========== 爱好弹窗 ==========
-(function() {
- // 爱好数据 - 替换成你自己的照片URL
+document.addEventListener('DOMContentLoaded', function() {
+ var modal = document.getElementById('hobbyModal');
+ var modalTitle = document.getElementById('hobbyModalTitle');
+ var modalBody = document.getElementById('hobbyModalBody');
+ var closeBtn = document.querySelector('.hobby-modal-close');
+
+ // 爱好数据
  var hobbyData = {
   '摄影': {
    images: [
@@ -134,17 +140,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
  };
 
- var modal = document.getElementById('hobbyModal');
- var modalTitle = document.getElementById('hobbyModalTitle');
- var modalBody = document.getElementById('hobbyModalBody');
- var closeBtn = document.querySelector('.hobby-modal-close');
-
  // 点击爱好卡片
  document.querySelectorAll('.hobby-card').forEach(function(card) {
   card.addEventListener('click', function() {
    var name = this.querySelector('.hobby-name').textContent;
    var data = hobbyData[name];
-   if (!data) return;
+   if (!data) {
+    console.warn('没有找到爱好数据:', name);
+    return;
+   }
 
    modalTitle.textContent = name;
    modalBody.innerHTML = '';
@@ -161,9 +165,11 @@ document.addEventListener('DOMContentLoaded', () => {
  });
 
  // 关闭弹窗
- closeBtn.addEventListener('click', function() {
-  modal.classList.remove('active');
- });
+ if (closeBtn) {
+  closeBtn.addEventListener('click', function() {
+   modal.classList.remove('active');
+  });
+ }
 
  modal.addEventListener('click', function(e) {
   if (e.target === modal) modal.classList.remove('active');
@@ -172,4 +178,4 @@ document.addEventListener('DOMContentLoaded', () => {
  document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') modal.classList.remove('active');
  });
-})();
+});
