@@ -143,7 +143,8 @@ document.addEventListener('DOMContentLoaded', function() {
  // 点击爱好卡片
  document.querySelectorAll('.hobby-card').forEach(function(card) {
   card.addEventListener('click', function() {
-   var name = this.querySelector('.hobby-name').textContent;
+   var name = this.querySelector('.hobby-name').textContent.trim();
+   console.log('点击了爱好:', name);
    var data = hobbyData[name];
    if (!data) {
     console.warn('没有找到爱好数据:', name);
