@@ -55,3 +55,25 @@ document.addEventListener('DOMContentLoaded', () => {
   })
   .catch(function(e) { console.warn('地图加载失败', e); });
 })();
+// ========== 我的世界足迹 ==========
+(function() {
+ var visitedCountries = [
+  'us','nz','au','kr','jp','cn','th','mv','mu','my','sg','id'
+ ];
+
+ var wrap = document.getElementById('worldMapWrapper');
+ if (!wrap) return;
+
+ fetch('assets/world-map.svg')
+  .then(function(r) { return r.text(); })
+  .then(function(svgText) {
+   wrap.innerHTML = svgText;
+   var svg = wrap.querySelector('svg');
+   if (!svg) return;
+   svg.classList.add('world-map-svg');
+   svg.querySelectorAll('path[id]').forEach(function(p) {
+    if (visitedCountries.indexOf(p.id) !== -1) p.classList.add('visited');
+   });
+  })
+  .catch(function(e) { console.warn('世界地图加载失败', e); });
+})();
