@@ -77,3 +77,99 @@ document.addEventListener('DOMContentLoaded', () => {
   })
   .catch(function(e) { console.warn('世界地图加载失败', e); });
 })();
+// ========== 爱好弹窗 ==========
+(function() {
+ // 爱好数据 - 替换成你自己的照片URL
+ var hobbyData = {
+  '摄影': {
+   images: [
+    'assets/hobby1-1.jpg',
+    'assets/hobby1-2.jpg',
+    'assets/hobby1-3.jpg',
+    'assets/hobby1-4.jpg'
+   ]
+  },
+  '旅游': {
+   images: [
+    'assets/hobby2-1.jpg',
+    'assets/hobby2-2.jpg',
+    'assets/hobby2-3.jpg',
+    'assets/hobby2-4.jpg'
+   ]
+  },
+  '骑车': {
+   images: [
+    'assets/hobby3-1.jpg',
+    'assets/hobby3-2.jpg',
+    'assets/hobby3-3.jpg'
+   ]
+  },
+  '主机游戏': {
+   images: [
+    'assets/hobby4-1.jpg',
+    'assets/hobby4-2.jpg',
+    'assets/hobby4-3.jpg'
+   ]
+  },
+  '画画': {
+   images: [
+    'assets/hobby5-1.jpg',
+    'assets/hobby5-2.jpg',
+    'assets/hobby5-3.jpg'
+   ]
+  },
+  '滑雪': {
+   images: [
+    'assets/hobby6-1.jpg',
+    'assets/hobby6-2.jpg',
+    'assets/hobby6-3.jpg'
+   ]
+  },
+  '数码': {
+   images: [
+    'assets/hobby7-1.jpg',
+    'assets/hobby7-2.jpg',
+    'assets/hobby7-3.jpg'
+   ]
+  }
+ };
+
+ var modal = document.getElementById('hobbyModal');
+ var modalTitle = document.getElementById('hobbyModalTitle');
+ var modalBody = document.getElementById('hobbyModalBody');
+ var closeBtn = document.querySelector('.hobby-modal-close');
+
+ // 点击爱好卡片
+ document.querySelectorAll('.hobby-card').forEach(function(card) {
+  card.addEventListener('click', function() {
+   var name = this.querySelector('.hobby-name').textContent;
+   var data = hobbyData[name];
+   if (!data) return;
+
+   modalTitle.textContent = name;
+   modalBody.innerHTML = '';
+   data.images.forEach(function(img, i) {
+    var imgEl = document.createElement('img');
+    imgEl.src = img;
+    imgEl.alt = name;
+    if (i === 0) imgEl.classList.add('full-width');
+    modalBody.appendChild(imgEl);
+   });
+
+   modal.classList.add('active');
+  });
+ });
+
+ // 关闭弹窗
+ closeBtn.addEventListener('click', function() {
+  modal.classList.remove('active');
+ });
+
+ modal.addEventListener('click', function(e) {
+  if (e.target === modal) modal.classList.remove('active');
+ });
+
+ document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') modal.classList.remove('active');
+ });
+})();
