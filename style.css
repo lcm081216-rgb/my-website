@@ -654,3 +654,87 @@ body::before {
   font-size: 12px;
   color: #9a8f7f;
 }
+/* ========== 爱好弹窗 ========== */
+.hobby-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+}
+
+.hobby-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hobby-modal-content {
+  background: #fff;
+  border-radius: 20px;
+  padding: 32px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+  animation: modalIn 0.3s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.hobby-modal-close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 28px;
+  font-weight: 300;
+  color: #999;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.hobby-modal-close:hover {
+  color: #333;
+}
+
+.hobby-modal-content h2 {
+  font-size: 18px;
+  font-weight: 400;
+  color: #5a5a5a;
+  border-bottom: 1px solid #e8e4df;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.hobby-modal-body {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.hobby-modal-body img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.hobby-modal-body img:hover {
+  transform: scale(1.03);
+}
+
+.hobby-modal-body img.full-width {
+  grid-column: span 2;
+  aspect-ratio: 2/1;
+}
