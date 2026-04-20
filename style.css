@@ -379,7 +379,7 @@ body::before {
 }
 
 .china-map-svg path.visited {
-  fill: #8b7d6b !important;
+  fill: inherit;
 }
 
 .china-map-svg path.visited:hover {
@@ -485,7 +485,7 @@ body::before {
 }
 
 .china-map-svg path.visited {
-  fill: #8b7d6b !important;
+  fill: inherit;
 }
 
 .china-map-svg path.visited:hover {
