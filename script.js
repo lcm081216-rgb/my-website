@@ -32,11 +32,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ========== 我的足迹 - 中国地图 ==========
 (function() {
- var visitedProvinces = [
-  'beijing','shanghai','nei-mongol','jilin','sichuan','yunnan',
-  'jiangsu','zhejiang','anhui','shandong','guangdong','guangxi-zhuang',
-  'hainan','hong-kong','macau'
- ];
+ var visitedProvinces = {
+  'beijing': 1,
+  'shanghai': 5,
+  'nei-mongol': 1,
+  'jilin': 2,
+  'sichuan': 1,
+  'yunnan': 2,
+  'jiangsu': 10,
+  'zhejiang': 5,
+  'anhui': 4,
+  'shandong': 2,
+  'guangdong': 3,
+  'guangxi-zhuang': 1,
+  'hainan': 4,
+  'hong-kong': 3,
+  'macau': 2
+ };
+
+ // 颜色深度映射
+ function getLevelClass(count) {
+  if (count >= 5) return 'level-5';
+  if (count >= 4) return 'level-4';
+  if (count >= 3) return 'level-3';
+  if (count >= 2) return 'level-2';
+  if (count >= 1) return 'level-1';
+  return 'level-0';
+ }
 
  var wrap = document.getElementById('mapWrapper');
  if (!wrap) return;
@@ -49,7 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
    if (!svg) return;
    svg.classList.add('china-map-svg');
    svg.querySelectorAll('path[id]').forEach(function(p) {
-    if (visitedProvinces.indexOf(p.id) !== -1) p.classList.add('visited');
+    var id = p.id;
+    if (visitedProvinces.hasOwnProperty(id)) {
+     var count = visitedProvinces[id];
+     p.classList.add('visited', getLevelClass(count));
+    }
    });
   })
   .catch(function(e) { console.warn('地图加载失败', e); });

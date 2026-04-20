@@ -841,3 +841,30 @@ body::before {
 #hobbyModalBody img:hover {
     transform: scale(1.02); /* 鼠标悬停稍微放大 */
 }
+
+/* 访问次数标记 */
+.visit-marker {
+  opacity: 0.9;
+  pointer-events: none;
+}
+.visit-marker circle {
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+}
+.visit-marker text {
+  pointer-events: none;
+}
+
+/* 颜色深度 - 访问次数 */
+.china-map-svg path.level-0 { fill: #f5f5f5; }
+.china-map-svg path.level-1 { fill: #d4c8bc; }
+.china-map-svg path.level-2 { fill: #b8a999; }
+.china-map-svg path.level-3 { fill: #9c8a76; }
+.china-map-svg path.level-4 { fill: #8b7d6b; }
+.china-map-svg path.level-5 { fill: #7a6d5d; }
+
+.china-map-svg path.level-0:hover { fill: #e8e4df; }
+.china-map-svg path.level-1:hover,
+.china-map-svg path.level-2:hover,
+.china-map-svg path.level-3:hover,
+.china-map-svg path.level-4:hover,
+.china-map-svg path.level-5:hover { filter: brightness(0.9); }
