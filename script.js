@@ -47,7 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
   'guangxi-zhuang': 1,
   'hainan': 4,
   'hong-kong': 3,
-  'macau': 2
+  'macau': 2,
+  'xinjiang-uygur': 1,
+  'liaoning': 1
  };
 
  // 颜色深度映射
