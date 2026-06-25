@@ -207,4 +207,4 @@ document.addEventListener('DOMContentLoaded', function() {
  document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') modal.classList.remove('active');
  });
-});
+});// updated Thu Jun 25 22:59:17 CST 2026
