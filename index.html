@@ -95,7 +95,7 @@
   <div id="mapWrapper" class="map-wrapper"></div>
   <div class="map-footer">
    <div class="map-stats">
-    <span class="stat-number">16</span>
+    <span class="stat-number">17</span>
     <span class="stat-label">个地区</span>
    </div>
    <div class="map-legend">
@@ -185,32 +185,6 @@
  </footer>
 
  <script src="script.js"></script>
- <script>
-  // 地图JS - 用setTimeout确保不影响主脚本
-  setTimeout(function() {
-   var visitedProvinces = [
-    'beijing','shanghai','nei-mongol','jilin','sichuan','yunnan',
-    'jiangsu','zhejiang','anhui','shandong','guangdong','guangxi-zhuang',
-    'hainan','hong-kong','macau','liaoning'
-   ];
-
-   var wrap = document.getElementById('mapWrapper');
-   if (!wrap) return;
-
-   fetch('assets/china-map.svg')
-    .then(function(r) { return r.text(); })
-    .then(function(svgText) {
-     wrap.innerHTML = svgText;
-     var svg = wrap.querySelector('svg');
-     if (!svg) return;
-     svg.classList.add('china-map-svg');
-     svg.querySelectorAll('path[id]').forEach(function(p) {
-      if (visitedProvinces.indexOf(p.id) !== -1) p.classList.add('visited');
-     });
-    })
-    .catch(function(e) { console.warn('地图加载失败', e); });
-  }, 1);
- </script>
   <!-- 爱好弹窗 -->
  <div id="hobbyModal" class="hobby-modal">
   <div class="hobby-modal-content">
