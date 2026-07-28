@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ========== 我的足迹 - 中国地图 ==========
 (function() {
  var visitedProvinces = {
-  'beijing': 1,
+  'beijing': 2,
   'shanghai': 5,
   'nei-mongol': 1,
   'jilin': 2,
@@ -49,7 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
   'hong-kong': 3,
   'macau': 2,
   'xinjiang-uygur': 1,
-  'liaoning': 1
+  'liaoning': 1,
+  'fujian': 1
  };
 
  // 颜色深度映射
