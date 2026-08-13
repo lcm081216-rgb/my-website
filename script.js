@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
   'xinjiang-uygur': 1,
   'liaoning': 1,
   'fujian': 1,
-  'guizhou': 1,
   'hunan': 1
  };
 
